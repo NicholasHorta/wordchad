@@ -1,0 +1,44 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap');
+
+*, *::before, *::after {
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: var(--blue);
+}
+
+.major {
+    min-height: 100%;
+}
+
+:root {
+    --orange: #fc9754;
+    --blue: #5ec8e2;
+    --red: #fc5454;
+    --green: #b6ea4e;
+}
+
+button {
+    padding: .75rem 2rem;
+    background: none;
+    border: 2px solid #999;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.proxy-btn {
+    cursor: pointer;
+}
+
+.darkmode {
+    color: #333 !important;
+}
+
+.darkmodeBody {
+    background-color: #333;
+    color: #fff !important;
+}

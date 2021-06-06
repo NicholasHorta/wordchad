@@ -1,0 +1,46 @@
+.charctrl__nav {
+    padding: 1rem;
+    background: var(--red);
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
+}
+
+.icon-image {
+    width: 100px;
+    height: 100px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url('../images/pepe.png');
+    margin: 0 0rem;
+}
+
+.nav--container {
+    display: flex;
+    max-width: 70%;
+    margin: 0 auto;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav--header{
+    font-size: 2rem;
+    color: var(--blue);
+    display: flex;
+    align-items: center;
+}
+
+
+
+.nav--about-btn {
+    font-size: 2rem;
+    color: #fff;
+}
+
+.dark-icon,
+.info-icon {
+    width: 30px;
+    height: 30px;
+    color: #fff;
+    margin: 0 1rem;
+    cursor: pointer;
+}
+
