@@ -1,46 +1,36 @@
-import {TextLogService} from '../text-log/text-log.service';
-import {Injectable} from '@angular/core';
+import { TextLogService } from '../text-log/text-log.service';
+import { Injectable } from '@angular/core';
 
 @Injectable()
 
-//! Text Count Service
-//!! Calculate characters and words amount
-//!! Avoid specials/punctuation - Regex
-
 export class TextCountService {
-    constructor(private textLogSVC: TextLogService){};
-    collectedText: string = '';
-    currentCharCount: number = 0;
-    currentWordCount: number = 0;
-    currentCharCountWithSpaceAndReturns: number = 0;
+    constructor(private textLogSVC: TextLogService) { };
+    collectedText: string;
+    currentCharCount: number;
+    currentWordCount: number;
+    currentCharTotalWithSpaceAndReturns: number;
     selectedOptionAmt: number = 280;
     newLineCheck: RegExp = /[\n]{1,}/g;
 
-
-    stringBreak(textBodyString: string){
+    stringBreak(textBodyString: string) {
         this.currentCharCount = 0;
         this.currentWordCount = 0;
-        this.currentCharCountWithSpaceAndReturns = 0;
-        const newLineHandler = textBodyString.replace(this.newLineCheck,  ' ');
-        newLineHandler.split(' ').map(i =>  i === '' ? i : this.currentWordCount++);
-        textBodyString.split('').map(i =>  this.currentCharCountWithSpaceAndReturns++);
-        textBodyString.split('').map(i =>  i === ' ' || i === '\n' ? i : this.currentCharCount++);
-        console.log(this.currentCharCount, '--Char');
-        console.log(this.currentWordCount, '--Word');
+        this.currentCharTotalWithSpaceAndReturns = 0;
+        const newLineHandler = textBodyString.replace(this.newLineCheck, ' ');
+        newLineHandler.split(' ').map(i => i === '' ? i : this.currentWordCount++);
+        console.log(textBodyString.split('').map(i => this.currentCharTotalWithSpaceAndReturns++));
+        textBodyString.split('').map(i => i === ' ' || i === '\n' ? i : this.currentCharCount++);
     }
 
-    calcCharAmt(collectedText: string){
+    calculateCharacterAmt(collectedText: string) {
         this.currentCharCount = collectedText.length
-        console.log('%ctext-count.service.ts line:34 this.currentCarCount', 'color: #007acc;', this.currentCharCount);
         this.stringBreak(collectedText)
     }
 }
 
-//@ Returns workings - still need to fix
-// const wordcount = textBodyString.split(' ').map(i =>  {
-//     if(this.newLineCheck.test(i)){
-//          return i.replace(this.newLineCheck, ' ');
-//     } else {
-//         return i;
-//     }
-// });
+//? stringBreak() 
+//@ collectedText variable with the current textarea value is passed as a param
+//@ CharCount, WordCount & CharTotal assigned ZERO sum starting values
+//@ These values accumulate conditionally according to the ternary outcome 
+//@ The textBodyString is split and the resulting array mapped over where the item within each is evaluated and return an increment to their appointed property 
+//@ The newLineCheck runs through the string and replaces any '\n' (carriage return) with a space, to contribute to the TOTAL word count

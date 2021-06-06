@@ -1,41 +1,40 @@
-<div class="main-container">
-  <div class="text-inputs-container">
+<div class="active-textbox__container">
+  <div class="active-textbox__text-inputs">
     <label for="title">Title:</label>
     <input type="text" name="" id="" #textTitle />
     <label for="body">Body:</label>
-    <textarea
-      name=""
-      id=""
-      cols="30"
-      rows="10"
-      [(ngModel)]="textBoxData"
-      (keyup)="textBoxDataCollection()"
-      #textBody
-    ></textarea>
+    <textarea name="" id="" cols="30" rows="20" [(ngModel)]="textBoxData" (keyup)="textBoxDataCollection()" #textBody></textarea>
   </div>
   <!-- Text CSS clamp on number?? -->
-  <div class="interactive-container">
-    <div class="char-and-word-amt-container">
-      <p>{{ charCountSansSpace }} Characters</p>
-      <p>{{ wordCountSansSpace }} Words</p>
-      <p>{{ charCountWithSpaceAndReturns }} Spaces & Return Inc</p>
+  <div class="active-textbox__interactive-area">
+    <div class="interactive-area__char-and-word-amounts char-and-word-amounts-top">
+      <p [ngStyle]="{'background-color': charCountWithSpaceAndReturns > totalCharLimit ? '#e44b4b' : '#17beb1'}">{{ charCountSansSpace }} Characters</p>
+      <p [ngStyle]="{'background-color': charCountWithSpaceAndReturns > totalCharLimit ? '#e44b4b' : '#17beb1'}">{{ wordCountSansSpace }} Words</p>
+      <p [ngStyle]="{'background-color': charCountWithSpaceAndReturns > totalCharLimit ? '#e44b4b' : '#17beb1'}" class="char-and-word-amounts__total-amount">
+        {{ charCountWithSpaceAndReturns }} Total
+      </p>
     </div>
-    <div class="char-and-word-amt-container">
-      <!-- !! Provide a with spaces amount maybe with a toggle to view or jut viewable anyway -->
+    <div class="interactive-area__char-and-word-amounts char-and-word-amounts-bottom">
+      <p>{{selectedOptionF}}</p>
+      <p>Character Limit: {{totalCharLimit}}</p>
+      <p>{{totalWordLimit === 0 ? 'No Word Limit Set' : totalWordLimit}} - Word Limit</p>
     </div>
-    <div class="action-btns-container">
-      <button class="action-btn" (click)="sendTextLogToSVC()">save
-        <svg xmlns="http://www.w3.org/2000/svg" class="save-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
+    <div class="interactive-area__action-buttons">
+      <button class="action-buttons__action-button" (click)="sendTextLogToSVC()">save
+        <svg xmlns="http://www.w3.org/2000/svg" class="save-svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+            d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
         </svg>
       </button>
-      <span class="btn-break"></span>
-      <button class="action-btn clear" (click)="clearTextBody()">clear
-        <svg xmlns="http://www.w3.org/2000/svg" class="clear-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={5} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+      <span class="action-buttons__button-space"></span>
+      <button class="action-buttons__action-button clear" (click)="clearTextBody()">clear
+        <svg xmlns="http://www.w3.org/2000/svg" class="clear-svg" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={5}
+            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
         </svg>
-        </button>
+      </button>
     </div>
-    <app-select-options></app-select-options>
+    <app-select-options (selectedOption)="selectedOption($event)"></app-select-options>
   </div>
 </div>

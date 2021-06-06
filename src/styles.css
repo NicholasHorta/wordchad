@@ -11,6 +11,10 @@ body {
     background-color: £#fff;
 }
 
+p {
+    margin: 0;
+}
+
 .major {
     min-height: 100%;
 }

@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, Output, ViewChild, EventEmitter, OnInit } from '@angular/core';
+import { Component, ElementRef, ViewChild, OnInit } from '@angular/core';
 import { TextLog } from '../models/text-log.model';
 import { TextCountService } from '../services/text-count/text-count.service';
 import { TextLogService } from '../services/text-log/text-log.service';
@@ -9,35 +9,36 @@ import { TextLogService } from '../services/text-log/text-log.service';
   styleUrls: ['./active-textbox.component.css'],
 })
 
-export class ActiveTextboxComponent {
-  
-  constructor(private textCountSVC: TextCountService, private textLogSVC: TextLogService) { }
+export class ActiveTextboxComponent implements OnInit {
 
+  constructor(private textCountSVC: TextCountService, private textLogSVC: TextLogService) { }
 
   @ViewChild('textTitle') textLogTitle: ElementRef;
   @ViewChild('textBody') textLogBody: ElementRef;
-
 
   textBoxData: string = '';
   wordCountSansSpace: number = 0;
   charCountSansSpace: number = 0;
   charCountWithSpaceAndReturns: number = 0;
-  clearedTextBody: boolean = false;
+  clearedTextBodyConfirmation: boolean = false;
+  selectedOptionF: string;
+  totalWordLimit: number;
+  totalCharLimit: number;
 
-  // Collecting the string data from the main textarea through ngModel
-  // Collected text data is sent to the TextCountService and stored as a string 
-  // Method is called with the collected text as a param and calculates TOTAL character sum incl: Spaces and returns
-  // We then 
+  ngOnInit() {
+    this.selectedOption('No Limit')
+  }
+
   textBoxDataCollection() {
     this.textCountSVC.collectedText = this.textBoxData;
-    this.textCountSVC.calcCharAmt(this.textCountSVC.collectedText);
+    this.textCountSVC.calculateCharacterAmt(this.textCountSVC.collectedText);
     this.wordCountSansSpace = this.textCountSVC.currentWordCount;
     this.charCountSansSpace = this.textCountSVC.currentCharCount;
-    this.charCountWithSpaceAndReturns = this.textCountSVC.currentCharCountWithSpaceAndReturns;
+    this.charCountWithSpaceAndReturns = this.textCountSVC.currentCharTotalWithSpaceAndReturns;
   }
 
   //!! Need to auto assign title through JSON
-  sendTextLogToSVC(){
+  sendTextLogToSVC() {
     const newLogTitle = this.textLogTitle.nativeElement.value === '' ? 'No Title' : this.textLogTitle.nativeElement.value;
     const newLogBody = this.textLogBody.nativeElement.value === '' ? 'Got nothing here bro!' : this.textLogBody.nativeElement.value;
     const newLogWordCount = this.wordCountSansSpace;
@@ -46,15 +47,48 @@ export class ActiveTextboxComponent {
     this.textLogSVC.logNew(newTextLog);
   }
 
-  clearTextBody(){
-    this.clearedTextBody = confirm('Are you sure you want to clear the text? This is NOT reversible. So don\'t get pissed at your PC if you choose to do it...');
-    if(this.clearedTextBody) {
+  clearTextBody() {
+    this.clearedTextBodyConfirmation = confirm(`Hey buddy, are you sure you want to clear the text, guy? This is NOT reversible friend...`);
+    if (this.clearedTextBodyConfirmation) {
       this.textLogBody.nativeElement.value = '';
       this.wordCountSansSpace = 0;
       this.charCountSansSpace = 0;
       this.charCountWithSpaceAndReturns = 0;
-      //!! Need to reset the counts 
     };
   }
 
+  selectedOption(inputValue: string) {
+    switch (inputValue) {
+      case 'twitter':
+        console.log('%cactive-textbox.component.ts line:63 HERE', 'color: #efa0c;', inputValue);
+        this.selectedOptionF = inputValue;
+        this.totalWordLimit = 0;
+        this.totalCharLimit = 280;
+        break;
+      case 'ucas':
+        this.selectedOptionF = inputValue;
+        this.totalWordLimit = 0;
+        this.totalCharLimit = 4000;
+        break;
+      case 'sms':
+        this.selectedOptionF = inputValue;
+        this.totalWordLimit = 0;
+        this.totalCharLimit = 160;
+        break;
+      default:
+        console.log('%cactive-textbox.component.ts line:65 inputValue', 'color: #ff7acc;', inputValue);
+        this.selectedOptionF = inputValue;
+        this.totalWordLimit = 0;
+        this.totalCharLimit = 0;
+    }
+  }
 }
+
+
+  //? textBoxDataCollection() 
+  //@ The function textBoxDataCollection runs on every keypress event
+  //@ Collecting the string data from the main textarea through ngModel
+  //@ Collected text data is sent to the TextCountService and stored as a string 
+  //@ calcCharAmt Method is called with the collectedText variable (within the service) as a param 
+  //@ This updates the variable the total amount/length of the strings tOTAL character sum incl: Spaces and returns
+  //@ stringBreak function is called  -> REF text-count.service.ts

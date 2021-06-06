@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 
 @Component({
   selector: 'app-select-options',
@@ -6,20 +6,10 @@ import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angula
   styleUrls: ['./select-options.component.css']
 })
 
-export class SelectOptionsComponent implements OnInit {
+export class SelectOptionsComponent {
+  @Output() selectedOption = new EventEmitter<string>();
 
-  @ViewChild('twitterOption') twitterOption: ElementRef;
-  @ViewChild('smsOption') smsOption: ElementRef;
-  @ViewChild('ucasOption') ucasOption: ElementRef;
-
-  constructor() { }
-
-
-
-  ngOnInit(): void {
+  selectedOptionHandler(event: Event){
+    this.selectedOption.emit((event.target as HTMLInputElement).value);
   }
-
-
-
-
 }

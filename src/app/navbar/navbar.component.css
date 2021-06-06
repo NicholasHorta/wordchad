@@ -21,9 +21,9 @@
     align-items: center;
 }
 
-.nav--header{
+.nav--header {
     font-size: 2rem;
-    color: var(--blue);
+    color: #fff;
     display: flex;
     align-items: center;
 }
