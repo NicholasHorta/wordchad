@@ -13,6 +13,7 @@ export class ActiveTextboxComponent {
   
   constructor(private textCountSVC: TextCountService, private textLogSVC: TextLogService) { }
 
+
   @ViewChild('textTitle') textLogTitle: ElementRef;
   @ViewChild('textBody') textLogBody: ElementRef;
 
@@ -23,10 +24,13 @@ export class ActiveTextboxComponent {
   charCountWithSpaceAndReturns: number = 0;
   clearedTextBody: boolean = false;
 
+  // Collecting the string data from the main textarea through ngModel
+  // Collected text data is sent to the TextCountService and stored as a string 
+  // Method is called with the collected text as a param and calculates TOTAL character sum incl: Spaces and returns
+  // We then 
   textBoxDataCollection() {
     this.textCountSVC.collectedText = this.textBoxData;
     this.textCountSVC.calcCharAmt(this.textCountSVC.collectedText);
-    console.log('%cactive-textbox.component.ts line:28 this.textCountSVC', 'color: #007acc;', this.textCountSVC);
     this.wordCountSansSpace = this.textCountSVC.currentWordCount;
     this.charCountSansSpace = this.textCountSVC.currentCharCount;
     this.charCountWithSpaceAndReturns = this.textCountSVC.currentCharCountWithSpaceAndReturns;
@@ -49,7 +53,6 @@ export class ActiveTextboxComponent {
       this.wordCountSansSpace = 0;
       this.charCountSansSpace = 0;
       this.charCountWithSpaceAndReturns = 0;
-
       //!! Need to reset the counts 
     };
   }

@@ -41,8 +41,9 @@
     padding: 1rem 0;
     color: #fff;
 }
-.char-and-word-amt-container p:nth-of-type(1) {
-    padding-right: 2rem;
+
+.char-and-word-amt-container p + p {
+    padding-left: 2rem;
 }
 
 .action-btns-container {

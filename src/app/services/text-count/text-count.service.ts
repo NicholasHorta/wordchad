@@ -21,27 +21,26 @@ export class TextCountService {
         this.currentCharCount = 0;
         this.currentWordCount = 0;
         this.currentCharCountWithSpaceAndReturns = 0;
-        //? Place condition here 
-        // textBodyString.split(' ').map(i =>  i === '' || this.newLineCheck.test(i) ? i : this.currentWordCount++);
-        const wordcount = textBodyString.split(' ').map(i =>  {
-            return i
-        });
-        const bppb = wordcount.map(i => {
-            return i.replace(this.newLineCheck, '')
-        })
-        console.log(bppb)
+        const newLineHandler = textBodyString.replace(this.newLineCheck,  ' ');
+        newLineHandler.split(' ').map(i =>  i === '' ? i : this.currentWordCount++);
         textBodyString.split('').map(i =>  this.currentCharCountWithSpaceAndReturns++);
         textBodyString.split('').map(i =>  i === ' ' || i === '\n' ? i : this.currentCharCount++);
-        // console.clear() //% CLEAR
         console.log(this.currentCharCount, '--Char');
         console.log(this.currentWordCount, '--Word');
-        // console.log(this.newLineCheck.test(), '--Regex');
     }
 
     calcCharAmt(collectedText: string){
         this.currentCharCount = collectedText.length
+        console.log('%ctext-count.service.ts line:34 this.currentCarCount', 'color: #007acc;', this.currentCharCount);
         this.stringBreak(collectedText)
-        console.log(this.currentCharCount, '--Count Without')
     }
-
 }
+
+//@ Returns workings - still need to fix
+// const wordcount = textBodyString.split(' ').map(i =>  {
+//     if(this.newLineCheck.test(i)){
+//          return i.replace(this.newLineCheck, ' ');
+//     } else {
+//         return i;
+//     }
+// });
