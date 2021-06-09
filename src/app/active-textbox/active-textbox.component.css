@@ -20,8 +20,10 @@
 .active-textbox__text-inputs textarea {
     padding: 1rem;
     border: none;
+    box-shadow: 0px 5px 5px #bbbbbb57;
     background-color: #f1f1f1;
     border-radius: 10px;
+    font-size: 1.15rem;
 }
 
 .active-textbox__text-inputs input:focus, 
@@ -125,4 +127,14 @@
     width: max-content;
     border-radius: 10px;
 
+}
+
+.active-textbox__text-inputs.active-textbox__dark-mode input, 
+.active-textbox__text-inputs.active-textbox__dark-mode textarea {
+    background-color: #eedf5c;
+    box-shadow: none;
+}
+
+.active-textbox__text-inputs.active-textbox__dark-mode label {
+    color: #fff;
 }

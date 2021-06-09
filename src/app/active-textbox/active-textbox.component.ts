@@ -1,7 +1,8 @@
-import { Component, ElementRef, ViewChild, OnInit } from '@angular/core';
+import { Component, ElementRef, ViewChild, OnInit, Input } from '@angular/core';
 import { TextLog } from '../models/text-log.model';
 import { TextCountService } from '../services/text-count/text-count.service';
 import { TextLogService } from '../services/text-log/text-log.service';
+import { TitleCreatorService } from '../services/title-creator.service';
 
 @Component({
   selector: 'app-active-textbox',
@@ -11,10 +12,11 @@ import { TextLogService } from '../services/text-log/text-log.service';
 
 export class ActiveTextboxComponent implements OnInit {
 
-  constructor(private textCountSVC: TextCountService, private textLogSVC: TextLogService) { }
+  constructor(private textCountSVC: TextCountService, private textLogSVC: TextLogService, private autoTitleSVC: TitleCreatorService) { }
 
   @ViewChild('textTitle') textLogTitle: ElementRef;
   @ViewChild('textBody') textLogBody: ElementRef;
+  @Input() darkModeActive: boolean;
 
   textBoxData: string = '';
   wordCountSansSpace: number = 0;
@@ -24,6 +26,7 @@ export class ActiveTextboxComponent implements OnInit {
   selectedOptionF: string;
   totalWordLimit: number;
   totalCharLimit: number;
+
 
   ngOnInit() {
     this.selectedOption('No Limit')
@@ -39,7 +42,13 @@ export class ActiveTextboxComponent implements OnInit {
 
   //!! Need to auto assign title through JSON
   sendTextLogToSVC() {
-    const newLogTitle = this.textLogTitle.nativeElement.value === '' ? 'No Title' : this.textLogTitle.nativeElement.value;
+    let newLogTitle = '';
+    if(this.textLogTitle.nativeElement.value === ''){
+      newLogTitle = `${this.autoTitleSVC.autoTitleCreator()} ${this.autoTitleSVC.autoTitleCreator()}`
+    } else {
+      newLogTitle = this.textLogTitle.nativeElement.value;
+    }
+    
     const newLogBody = this.textLogBody.nativeElement.value === '' ? 'Got nothing here bro!' : this.textLogBody.nativeElement.value;
     const newLogWordCount = this.wordCountSansSpace;
     const newLogCharCount = this.charCountSansSpace;

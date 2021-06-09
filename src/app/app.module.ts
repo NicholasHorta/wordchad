@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 // Services
-import {TextCountService} from './services/text-count/text-count.service';
+import { TextCountService } from './services/text-count/text-count.service';
 import { TextLogService } from './services/text-log/text-log.service';
-
+import { TitleCreatorService } from './services/title-creator.service'
+// Directives
 
 // Components
 import { AppComponent } from './app.component';
@@ -22,13 +24,14 @@ import { SelectOptionsComponent } from './active-textbox/select-options/select-o
     AboutComponent,
     ActiveTextboxComponent,
     TextLogsComponent,
-    SelectOptionsComponent
+    SelectOptionsComponent,
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [TextCountService, TextLogService],
+  providers: [TextCountService, TextLogService, TitleCreatorService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,5 @@
-import { Component, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
+import { TitleCreatorService } from './services/title-creator.service';
 
 @Component({
   selector: 'app-root',
@@ -7,14 +8,15 @@ import { Component, Output, EventEmitter, ViewChild, ElementRef } from '@angular
 })
 export class AppComponent {
 
-  @ViewChild('qwe') item!: ElementRef;
 
-  receivedInfo: string = ''
+  constructor(private titleCreator: TitleCreatorService){}
 
-  giveMeInfo(ev: string){
-    this.receivedInfo = ev
-    console.log(this.receivedInfo)
-    this.item.nativeElement.ownerDocument.body.classList.toggle('darkmodeBody')
-    console.dir(this.item.nativeElement)
+  darkModeActive: boolean = false;
+
+  darkModeStatus($event: boolean){
+    this.darkModeActive = $event;
   }
+
+
+
 }

@@ -1,5 +1,9 @@
-<div class="major" #qwe>
-  <app-navbar (sendOut)="giveMeInfo($event)"></app-navbar>
-  <app-active-textbox></app-active-textbox>
-  <app-text-logs></app-text-logs>
+<div [ngClass]="{'app__dark-mode': darkModeActive}" >
+  <app-navbar (toggleDarkModeStatus)="darkModeStatus($event)">
+  </app-navbar>
+  <app-active-textbox [darkModeActive]="darkModeActive">
+  </app-active-textbox>
+  <app-text-logs >
+  </app-text-logs>
+  <p></p>
 </div>

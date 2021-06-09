@@ -1,5 +1,5 @@
 <div class="active-textbox__container">
-  <div class="active-textbox__text-inputs">
+  <div class="active-textbox__text-inputs" [ngClass]="{'active-textbox__dark-mode': darkModeActive}">
     <label for="title">Title:</label>
     <input type="text" name="" id="" #textTitle />
     <label for="body">Body:</label>

@@ -1,19 +1,11 @@
+
 .charctrl__nav {
     padding: 1rem;
-    background: var(--red);
+    /* background: var(--red); */
     clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
 }
 
-.icon-image {
-    width: 100px;
-    height: 100px;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-image: url('../images/pepe.png');
-    margin: 0 0rem;
-}
-
-.nav--container {
+.nav__container {
     display: flex;
     max-width: 70%;
     margin: 0 auto;
@@ -21,26 +13,35 @@
     align-items: center;
 }
 
-.nav--header {
+.nav__header {
     font-size: 2rem;
-    color: #fff;
+    color: #333;
     display: flex;
     align-items: center;
+    font-family: 'Press Start 2P', cursive;
 }
 
-
-
-.nav--about-btn {
-    font-size: 2rem;
-    color: #fff;
+.header__icon-image {
+    width: 100px;
+    height: 100px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url('../../assets/images/pepe.png');
+    margin: 0 0rem;
 }
 
-.dark-icon,
-.info-icon {
+.nav__toggle-icons .dark-icon,
+.nav__toggle-icons .info-icon {
     width: 30px;
     height: 30px;
-    color: #fff;
+    color: #333;
     margin: 0 1rem;
     cursor: pointer;
 }
 
+
+.nav__dark-mode,
+.nav__dark-mode .dark-icon,
+.nav__dark-mode .info-icon {
+    color: #fff;
+}
