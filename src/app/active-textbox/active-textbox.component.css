@@ -19,17 +19,18 @@
 .active-textbox__text-inputs input, 
 .active-textbox__text-inputs textarea {
     padding: 1rem;
-    border: none;
-    box-shadow: 0px 5px 5px #bbbbbb57;
-    background-color: #f1f1f1;
-    border-radius: 10px;
+    border: 2px solid #e2e2e2;
+    background-color: #ffffff;
+    border-radius: 8px;
     font-size: 1.15rem;
+
 }
 
 .active-textbox__text-inputs input:focus, 
 .active-textbox__text-inputs textarea:focus {
     outline: none;
-    background-color: #e2e2e2;
+    background-color: #fcfcfc;
+    border: 2px solid var(--green);
 }
 
 .active-textbox__interactive-area {
@@ -51,18 +52,18 @@
 }
 
 .interactive-area__char-and-word-amounts p {
-    padding: 1rem 1.5rem;
+    padding: .5rem 1.5rem;
     margin: .5rem;
     background: rgb(255, 187, 41);
-    border-radius: 50px;
+    border-radius: 8px;
     letter-spacing: .05rem;
+    font-size: 0.9rem;
 }
 
 
 .interactive-area__action-buttons {
     display: flex;
     justify-content: flex-end;
-    
 }
 
 .interactive-area__action-buttons .action-buttons__action-button,
@@ -86,8 +87,8 @@
 }
 
 .action-buttons__action-button:nth-of-type(1) {
-    background: #00d68f;
-    border-color: #00d68f;
+    background: var(--green);
+    border-color: var(--green);
 }
 
 .clear-svg, .save-svg {
@@ -114,19 +115,31 @@
     position: relative;
 }
 
-.char-and-word-amounts__total-amount:hover::after {
+.char-and-word-amounts__total-amount:hover::before {
     content: 'Returns and spaces included';
-    color: #fff;
+    color: rgb(121, 121, 121);
     position: absolute;
     left: 0;
     margin-left: 50%;
     transform: translateX(-50%);
-    top: -300%;
+    top: -4rem;
     padding: 1rem;
-    background: rgb(97, 97, 97);
+    background: #ececec;
     width: max-content;
-    border-radius: 10px;
+    border-radius: 9px;
+}
 
+.char-and-word-amounts__total-amount:hover::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    margin-left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    top: -1.75rem;
+    padding: .5rem;
+    background: #ececec;
+    width: max-content;
+    z-index: -1;
 }
 
 .active-textbox__text-inputs.active-textbox__dark-mode input, 

@@ -22,14 +22,15 @@ p {
     --orange: #fc9754;
     --blue: #5ec8e2;
     --red: #fc5454;
-    --green: #b6ea4e;
+    --green: #00d68f;
+    --teal: #17beb1;
 }
 
 button {
     padding: .75rem 2rem;
     background: none;
     border: 2px solid #999;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
 }
 
