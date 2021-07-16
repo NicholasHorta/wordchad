@@ -3,10 +3,14 @@ export class TextLog {
   public body: string;
   public charAmt: number;
   public wordAmt: number;
-  constructor(title: string, body: string, chars: number, words: number) {
+  public totalAmt: number;
+  public logId: number;
+  constructor(title: string, body: string, chars: number, words: number, total: number, logId: number) {
     this.title = title;
     this.body = body;
     this.charAmt = chars;
     this.wordAmt = words;
+    this.totalAmt = total;
+    this.logId = logId;
   }
 }

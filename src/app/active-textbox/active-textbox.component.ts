@@ -26,7 +26,9 @@ export class ActiveTextboxComponent implements OnInit {
   selectedOptionF: string;
   totalWordLimit: number;
   totalCharLimit: number;
-
+  logId: number;
+  //!! Configure date for model and service 
+  logTime: object = new Date();
 
   ngOnInit() {
     this.selectedOption('No Limit')
@@ -40,19 +42,19 @@ export class ActiveTextboxComponent implements OnInit {
     this.charCountWithSpaceAndReturns = this.textCountSVC.currentCharTotalWithSpaceAndReturns;
   }
 
-  //!! Need to auto assign title through JSON
   sendTextLogToSVC() {
     let newLogTitle = '';
     if(this.textLogTitle.nativeElement.value === ''){
-      newLogTitle = `${this.autoTitleSVC.autoTitleCreator()} ${this.autoTitleSVC.autoTitleCreator()}`
+      newLogTitle = `${this.autoTitleSVC.autoTitleCreator()} ${this.autoTitleSVC.autoTitleCreator()}`;
     } else {
       newLogTitle = this.textLogTitle.nativeElement.value;
     }
-    
     const newLogBody = this.textLogBody.nativeElement.value === '' ? 'Got nothing here bro!' : this.textLogBody.nativeElement.value;
     const newLogWordCount = this.wordCountSansSpace;
     const newLogCharCount = this.charCountSansSpace;
-    const newTextLog = new TextLog(newLogTitle, newLogBody, newLogCharCount, newLogWordCount);
+    const newTotalCharCount = this.charCountWithSpaceAndReturns;
+    const newLogId = this.logId;
+    const newTextLog = new TextLog(newLogTitle, newLogBody, newLogCharCount, newLogWordCount, newTotalCharCount, newLogId);
     this.textLogSVC.logNew(newTextLog);
   }
 

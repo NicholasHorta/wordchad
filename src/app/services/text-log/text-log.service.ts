@@ -10,7 +10,7 @@ import {TextLog} from '../../models/text-log.model';
 
 export class TextLogService {
     
-    textLogsArray: TextLog[] = [];
+    textLogsArray: TextLog[] = [{title: 'Shoob', body: 'oavbdvobandpovnadivnadn', charAmt: 44, wordAmt: 17, totalAmt: 60, logId: 1}];
 
     logNew(log: TextLog){
         this.textLogsArray.push(log)
@@ -18,6 +18,10 @@ export class TextLogService {
 
     getExistingArray(){
         return this.textLogsArray
+    }
+
+    removeItemFromArray(){
+
     }
    
 }

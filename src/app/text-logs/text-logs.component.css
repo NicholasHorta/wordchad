@@ -1,0 +1,54 @@
+.text-logs__container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 3rem;
+    margin-top: 3rem;
+}
+
+.text-logs__logged-item {
+    background-color: #f1f1f1;
+}
+
+.logged-item__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.logged-item__meta-data {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 1.5rem;
+
+}
+
+.header__item-title {
+    padding: 0 1.5rem;
+}
+
+.header__functional-icons {
+
+}
+
+.functional-icons__icon {
+    height: 1.5rem;
+    width: 1.5rem;
+    margin: 1rem 1.5rem;
+    cursor: pointer;
+}
+
+.functional-icons__icon .copy {
+    color: #44d68f;
+}
+.functional-icons__icon .color {
+    color: #fbbb2a;
+}
+.functional-icons__icon .delete {
+    color: #e44b4b;
+}
+
+.logged-item__logged-items {
+    padding: 1.5rem;
+}
+
