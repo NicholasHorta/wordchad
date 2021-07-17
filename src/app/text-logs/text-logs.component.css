@@ -1,12 +1,26 @@
+.text-logs__overlay {
+    position: absolute;
+    top: 0;
+    left:0;
+    right: 0;
+    bottom: 0;
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    padding: 1rem 7.5% 1rem 1rem;
+
+}
+
 .text-logs__container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 0 3rem;
-    margin-top: 3rem;
+    display: block;
+    max-width: 50%;
+    word-wrap: break-word;
+    padding: 2rem  1rem;
 }
 
 .text-logs__logged-item {
-    background-color: #f1f1f1;
+    background-color: #fafafa;
+    border-radius: var(--radius);
 }
 
 .logged-item__header {
@@ -39,16 +53,30 @@
 }
 
 .functional-icons__icon .copy {
-    color: #44d68f;
+    color: var(--teal);
 }
 .functional-icons__icon .color {
-    color: #fbbb2a;
+    color: var(--orange);
 }
 .functional-icons__icon .delete {
-    color: #e44b4b;
+    color: var(--red);
 }
 
 .logged-item__logged-items {
     padding: 1.5rem;
 }
+.logged-items__item-body {
+    line-height: 1.55rem;
+}
+.logged-items__set-amounts {
+    padding-top: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+}
 
+.logged-items__set-amounts span {
+    background-color: var(--orange);
+    color: #fff;
+    padding: .5rem 1.5rem;
+    border-radius: var(--radius);
+}

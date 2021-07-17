@@ -1,10 +1,23 @@
-<div class="select-options-container">
-    <label for="text-options">Twitter</label>
-    <input type="radio" name="text-options" (click)="selectedOptionHandler($event)" value="twitter">
-    <label for="text-options">SMS</label>
-    <input type="radio" name="text-options" (click)="selectedOptionHandler($event)" value="sms">
-    <label for="text-options">UCAS</label>
-    <input type="radio" name="text-options" (click)="selectedOptionHandler($event)" value="ucas">
-    <label for="text-options">Free Flow</label>
-    <input type="radio" name="text-options" (click)="selectedOptionHandler($event)" value="free" checked>
+<div class="select-options--container">
+    <div class="select-options__option-item">
+        <label for="text-options">Twitter</label>
+        <input type="radio" name="text-options" (click)="selectedOptionHandler($event)" value="twitter">
+        <span class="checked-tag"></span>
+    </div>
+    <div class="select-options__option-item">
+        <label for="text-options">SMS</label>
+        <input type="radio" name="text-options" (click)="selectedOptionHandler($event)" value="SMS">
+        <span class="checked-tag"></span>
+    </div>
+    <div class="select-options__option-item">
+        <label for="text-options">UCAS</label>
+        <input type="radio" name="text-options" (click)="selectedOptionHandler($event)" value="UCAS">
+        <span class="checked-tag"></span>
+    </div>
+    <div class="select-options__option-item">
+        <label for="text-options">Free Flow</label>
+        <input type="radio" name="text-options" (click)="selectedOptionHandler($event)" value="No Limit" checked>
+        <span class="checked-tag"></span>
+    </div>
+
 </div>

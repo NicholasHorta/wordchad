@@ -19,18 +19,21 @@ p {
 }
 
 :root {
-    --orange: #fc9754;
+    --orange: #ffbb29;
     --blue: #5ec8e2;
     --red: #fc5454;
     --green: #00d68f;
     --teal: #17beb1;
+    --grey: #e2e2e2;
+    --section-space: 3rem;
+    --radius: 9px;
 }
 
 button {
     padding: .75rem 2rem;
     background: none;
     border: 2px solid #999;
-    border-radius: 8px;
+    border-radius: 9px;
     cursor: pointer;
 }
 
