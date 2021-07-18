@@ -16,6 +16,7 @@ import { AboutComponent } from './about/about.component';
 import { ActiveTextboxComponent } from './active-textbox/active-textbox.component';
 import { TextLogsComponent } from './text-logs/text-logs.component';
 import { SelectOptionsComponent } from './active-textbox/select-options/select-options.component';
+import { ToggleLogsViewComponent } from "./active-textbox/toggle-view/toggle-logs-view.component"
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { SelectOptionsComponent } from './active-textbox/select-options/select-o
     ActiveTextboxComponent,
     TextLogsComponent,
     SelectOptionsComponent,
+    ToggleLogsViewComponent
   ],
   imports: [
     BrowserModule,

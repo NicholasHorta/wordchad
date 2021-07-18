@@ -1,23 +1,25 @@
 <div class="select-options--container">
-    <div class="select-options__option-item">
-        <label for="text-options">Twitter</label>
-        <input type="radio" name="text-options" (click)="selectedOptionHandler($event)" value="twitter">
-        <span class="checked-tag"></span>
+    <p class="select-options--text-section">Select one of the following to set an optional parameter. Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni tenetur fuga sit debitis placeat iure nam aperiam quibusdam iste veniam assumenda, eligendi rerum. Eum, ratione?</p>
+    <div class="select-options__options">
+        <div class="select-options__option-item">
+            <label for="text-options">Twitter</label>
+            <input type="radio" name="text-options" (click)="selectedOptionHandler($event)" value="twitter">
+            <span class="checked-tag"></span>
+        </div>
+        <div class="select-options__option-item">
+            <label for="text-options">SMS</label>
+            <input type="radio" name="text-options" (click)="selectedOptionHandler($event)" value="SMS">
+            <span class="checked-tag"></span>
+        </div>
+        <div class="select-options__option-item">
+            <label for="text-options">UCAS</label>
+            <input type="radio" name="text-options" (click)="selectedOptionHandler($event)" value="UCAS">
+            <span class="checked-tag"></span>
+        </div>
+        <div class="select-options__option-item">
+            <label for="text-options">Free Flow</label>
+            <input type="radio" name="text-options" (click)="selectedOptionHandler($event)" value="No Limit" checked>
+            <span class="checked-tag"></span>
+        </div>
     </div>
-    <div class="select-options__option-item">
-        <label for="text-options">SMS</label>
-        <input type="radio" name="text-options" (click)="selectedOptionHandler($event)" value="SMS">
-        <span class="checked-tag"></span>
-    </div>
-    <div class="select-options__option-item">
-        <label for="text-options">UCAS</label>
-        <input type="radio" name="text-options" (click)="selectedOptionHandler($event)" value="UCAS">
-        <span class="checked-tag"></span>
-    </div>
-    <div class="select-options__option-item">
-        <label for="text-options">Free Flow</label>
-        <input type="radio" name="text-options" (click)="selectedOptionHandler($event)" value="No Limit" checked>
-        <span class="checked-tag"></span>
-    </div>
-
 </div>

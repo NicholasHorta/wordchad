@@ -1,9 +1,8 @@
 <div [ngClass]="{'app__dark-mode': darkModeActive}" >
-  <!-- <app-navbar (toggleDarkModeStatus)="darkModeStatus($event)"> -->
-  <!-- </app-navbar> -->
-  <app-active-textbox [darkModeActive]="darkModeActive">
-  </app-active-textbox>
-  <app-text-logs>
+  <!-- <app-navbar (toggleDarkModeStatus)="darkModeStatus($event)"></app-navbar> -->
+  <toggle-logs-view (toggleLogsView)="toggleLogsView($event)"></toggle-logs-view> 
+  <app-active-textbox [textLogViewState]="logsViewStatus" [darkModeActive]="darkModeActive"></app-active-textbox>
+  <app-text-logs *ngIf="logsViewStatus">
   </app-text-logs>
   <p></p>
 </div>

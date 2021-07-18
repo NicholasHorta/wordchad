@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild, OnInit, Input } from '@angular/core';
+import { Component, ElementRef, ViewChild, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { TextLog } from '../models/text-log.model';
 import { TextCountService } from '../services/text-count/text-count.service';
 import { TextLogService } from '../services/text-log/text-log.service';
@@ -10,13 +10,18 @@ import { TitleCreatorService } from '../services/title-creator.service';
   styleUrls: ['./active-textbox.component.css'],
 })
 
-export class ActiveTextboxComponent implements OnInit {
+export class ActiveTextboxComponent implements OnInit, OnChanges{
 
   constructor(private textCountSVC: TextCountService, private textLogSVC: TextLogService, private autoTitleSVC: TitleCreatorService) { }
 
   @ViewChild('textTitle') textLogTitle: ElementRef;
   @ViewChild('textBody') textLogBody: ElementRef;
+  @ViewChild('textBoxArea') textBoxArea: ElementRef;
+  @ViewChild('mainPage') mainPage: ElementRef<HTMLDivElement>;
   @Input() darkModeActive: boolean;
+  @Input() textLogViewState: boolean;
+
+
 
   textBoxData: string = '';
   wordCountSansSpace: number = 0;
@@ -31,7 +36,16 @@ export class ActiveTextboxComponent implements OnInit {
   logTime: object = new Date();
 
   ngOnInit() {
-    this.selectedOption('No Limit')
+    this.selectedOption('No Limit');
+  }
+
+  ngOnChanges(){
+    try {
+      this.mainPage.nativeElement.classList.toggle('active-textbox__background-blur-active');
+    } catch(err){
+      //. On Initialization an error will be thrown, this is handling that initial error
+      return
+    }
   }
 
   textBoxDataCollection() {
@@ -54,7 +68,8 @@ export class ActiveTextboxComponent implements OnInit {
     const newLogCharCount = this.charCountSansSpace;
     const newTotalCharCount = this.charCountWithSpaceAndReturns;
     const newLogId = this.logId;
-    const newTextLog = new TextLog(newLogTitle, newLogBody, newLogCharCount, newLogWordCount, newTotalCharCount, newLogId);
+    const optionId = this.selectedOptionF;
+    const newTextLog = new TextLog(newLogTitle, newLogBody, newLogCharCount, newLogWordCount, newTotalCharCount, newLogId, optionId);
     this.textLogSVC.logNew(newTextLog);
   }
 
@@ -71,27 +86,25 @@ export class ActiveTextboxComponent implements OnInit {
   selectedOption(inputValue: string) {
     switch (inputValue) {
       case 'twitter':
-        console.log('%cactive-textbox.component.ts line:63 HERE', 'color: #efa0c;', inputValue);
         this.selectedOptionF = inputValue;
         this.totalWordLimit = 0;
         this.totalCharLimit = 280;
         break;
-      case 'ucas':
+      case 'UCAS':
         this.selectedOptionF = inputValue;
         this.totalWordLimit = 0;
         this.totalCharLimit = 4000;
         break;
-      case 'sms':
+      case 'SMS':
         this.selectedOptionF = inputValue;
         this.totalWordLimit = 0;
         this.totalCharLimit = 160;
         break;
       default:
-        console.log('%cactive-textbox.component.ts line:65 inputValue', 'color: #ff7acc;', inputValue);
         this.selectedOptionF = inputValue;
         this.totalWordLimit = 0;
         this.totalCharLimit = 0;
-    }
+    }   
   }
 }
 

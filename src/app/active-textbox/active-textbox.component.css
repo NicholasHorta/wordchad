@@ -4,34 +4,10 @@
     padding: 0 3rem;
     padding: 0 30rem;
     background-image: linear-gradient(#fff);
-    filter: blur(10px);
 }
 
-.active-textbox__toggle-logs-view {
-    height: 4rem;
-    width: 4rem;
-    position: fixed;
-    right: 3rem;
-    top: 1rem;
-    color: #fff;
-    z-index: 11;
-    background: var(--orange);
-    padding: 1rem;
-    border-radius: var(--radius);
-    cursor: pointer;
-}
-
-.active-textbox__toggle-logs-view:hover::before {
-    content: 'Logs Folder';
-    color: #e6a100;
-    position: absolute;
-    padding: .5rem;
-    top: 4.5rem;
-    width: 120px;
-    right: -28px;
-    background: #fffaee;
-    border-radius: var(--radius);
-    text-align: center;
+.active-textbox__background-blur-active {
+    filter:blur(10px);
 }
 
 /* Relative to the document body */
@@ -79,7 +55,7 @@
 }
 
 .char-and-word-amounts-top {
-    margin-top: var(--section-space);
+    margin-top: 0.5rem;
 }
 
 .char-and-word-amounts-bottom {
@@ -88,7 +64,7 @@
 
 .interactive-area__char-and-word-amounts p {
     padding: .5rem 1.5rem;
-    margin: .5rem;
+    margin: 0.5rem 0rem 0.5rem 0.5rem;
     background: var(--orange);
     border-radius: var(--radius);
     letter-spacing: .05rem;

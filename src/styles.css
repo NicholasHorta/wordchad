@@ -25,8 +25,11 @@ p {
     --green: #00d68f;
     --teal: #17beb1;
     --grey: #e2e2e2;
+    --dark-blue: #178cbb;
     --section-space: 3rem;
     --radius: 9px;
+    --radio-buttons-text: #2a8b82;
+    --radio-buttons-bg: #39beb144;
 }
 
 button {

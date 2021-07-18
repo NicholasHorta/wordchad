@@ -1,0 +1,48 @@
+.background-blur-active {
+    filter: blur(10px);
+}
+
+.active-textbox__toggle-logs-view {
+    height: 6rem;
+    width: 6rem;
+    position: fixed;
+    right: 0rem;
+    top: 0rem;
+    color: #fff;
+    z-index: 55;
+    background: var(--orange);
+    padding: 1rem;
+    border-bottom-left-radius: var(--radius);
+    cursor: pointer;
+    box-shadow: 3px 3px 9px #d4cebe;
+}
+
+/* .active-textbox__toggle-logs-view:hover::after {
+    content: 'Logs Folder';
+    color: #e6a100;
+    position: absolute;
+    padding: 0.5rem;
+    top: 3.75rem;
+    width: 120px;
+    right: -35px;
+    background: #fffaee;
+    border-radius: var(--radius);
+    text-align: center;
+} */
+.active-textbox__toggle-logs-view::before {
+    opacity: 0;
+    transition: opacity 250ms ease-in;
+}
+/* .active-textbox__toggle-logs-view:hover::before {
+    content: 'Text Logs';
+    color: #e6a100;
+    position: absolute;
+    font-size: 1.15rem;
+    top: 7rem;
+    right: 0.75rem;
+    border-radius: var(--radius);
+    text-align: center;
+    z-index: -190;
+    opacity: 1;
+    transition: opacity 250ms ease-in;
+} */

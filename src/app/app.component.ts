@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, ElementRef, EventEmitter, Output} from '@angular/core';
 import { TitleCreatorService } from './services/title-creator.service';
 
 @Component({
@@ -8,8 +8,11 @@ import { TitleCreatorService } from './services/title-creator.service';
 })
 export class AppComponent {
 
+  logsViewStatus: boolean;
+  
+  @Output() xyz: EventEmitter<boolean> = new EventEmitter<boolean>()
 
-  constructor(private titleCreator: TitleCreatorService){}
+  constructor(){}
 
   darkModeActive: boolean = false;
 
@@ -17,6 +20,8 @@ export class AppComponent {
     this.darkModeActive = $event;
   }
 
-
+  toggleLogsView(item: boolean){
+    this.logsViewStatus = item;
+  }
 
 }

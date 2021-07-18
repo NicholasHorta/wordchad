@@ -5,12 +5,14 @@ export class TextLog {
   public wordAmt: number;
   public totalAmt: number;
   public logId: number;
-  constructor(title: string, body: string, chars: number, words: number, total: number, logId: number) {
+  public optionId: string;
+  constructor(title: string, body: string, chars: number, words: number, total: number, logId: number, optionId: string) {
     this.title = title;
     this.body = body;
     this.charAmt = chars;
     this.wordAmt = words;
     this.totalAmt = total;
     this.logId = logId;
+    this.optionId = optionId;
   }
 }
