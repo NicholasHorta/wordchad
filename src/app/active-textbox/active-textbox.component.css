@@ -45,6 +45,10 @@
     border: 2px solid var(--green);
 }
 
+.active-textbox__text-inputs input::placeholder {
+    color: #cacaca;
+}
+
 .active-textbox__interactive-area {
     display: flex;
     flex-direction: column;

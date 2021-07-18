@@ -1,18 +1,20 @@
-import { Component, ElementRef, ViewChild, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, ElementRef, ViewChild, OnInit, Input, OnChanges } from '@angular/core';
 import { TextLog } from '../models/text-log.model';
 import { TextCountService } from '../services/text-count/text-count.service';
 import { TextLogService } from '../services/text-log/text-log.service';
 import { TitleCreatorService } from '../services/title-creator.service';
+import { PlaceholderService }  from '../services/placeholder.service';
 
 @Component({
   selector: 'app-active-textbox',
   templateUrl: './active-textbox.component.html',
   styleUrls: ['./active-textbox.component.css'],
+  providers: [PlaceholderService]
 })
 
 export class ActiveTextboxComponent implements OnInit, OnChanges{
 
-  constructor(private textCountSVC: TextCountService, private textLogSVC: TextLogService, private autoTitleSVC: TitleCreatorService) { }
+  constructor(private textCountSVC: TextCountService, private textLogSVC: TextLogService, private autoTitleSVC: TitleCreatorService, private placeholderSVC: PlaceholderService) { }
 
   @ViewChild('textTitle') textLogTitle: ElementRef;
   @ViewChild('textBody') textLogBody: ElementRef;
@@ -21,21 +23,21 @@ export class ActiveTextboxComponent implements OnInit, OnChanges{
   @Input() darkModeActive: boolean;
   @Input() textLogViewState: boolean;
 
+  dynPlaceholderText: string
   textBoxData: string = '';
   wordCountSansSpace: number = 0;
   charCountSansSpace: number = 0;
   charCountWithSpaceAndReturns: number = 0;
   clearedTextBodyConfirmation: boolean = false;
-  selectedOptionF: string;
+  selectedOptionType: string;
   totalWordLimit: number;
   totalCharLimit: number;
   optionColorCode: string;
   logId: number;
-  //!! Configure date for model and service 
-  logTime: object = new Date();
 
   ngOnInit() {
     this.selectedOption('Note');
+    this.placeholderSVC.optionProperty = this.selectedOptionType;
   }
 
   ngOnChanges(){
@@ -56,20 +58,26 @@ export class ActiveTextboxComponent implements OnInit, OnChanges{
   }
 
   sendTextLogToSVC() {
+    // Title Generate if none present
     let newLogTitle = '';
     if(this.textLogTitle.nativeElement.value === ''){
       newLogTitle = `${this.autoTitleSVC.autoTitleCreator()} ${this.autoTitleSVC.autoTitleCreator()}`;
     } else {
       newLogTitle = this.textLogTitle.nativeElement.value;
     }
+    // Timestamp Generate
+    const timeRef = String(new Date()).split(' ');
+    const logTime = `${timeRef[0]} ${timeRef[1]} ${timeRef[2]} ${timeRef[3]} ${timeRef[4]}`;
+    
+    // Implement other instances of text
     const newLogBody = this.textLogBody.nativeElement.value === '' ? 'Got nothing here bro!' : this.textLogBody.nativeElement.value;
     const newLogWordCount = this.wordCountSansSpace;
     const newLogCharCount = this.charCountSansSpace;
     const newTotalCharCount = this.charCountWithSpaceAndReturns;
     const newLogId = this.logId;
-    const optionId = this.selectedOptionF;
+    const optionId = this.selectedOptionType;
     const colorCode = this.optionColorCode;
-    const newTextLog = new TextLog(newLogTitle, newLogBody, newLogCharCount, newLogWordCount, newTotalCharCount, newLogId, optionId, colorCode);
+    const newTextLog = new TextLog(newLogTitle, newLogBody, newLogCharCount, newLogWordCount, newTotalCharCount, newLogId, optionId, colorCode, logTime);
     this.textLogSVC.logNew(newTextLog);
   }
 
@@ -86,42 +94,43 @@ export class ActiveTextboxComponent implements OnInit, OnChanges{
   selectedOption(inputValue: string) {
     switch (inputValue) {
       case 'Important':
-        this.selectedOptionF = inputValue;
+        this.selectedOptionType = inputValue;
         this.totalWordLimit = 0;
         this.optionColorCode = 'var(--option-red)'; 
         this.totalCharLimit = 0;
         break;
       case 'To Do':
-        this.selectedOptionF = inputValue;
+        this.selectedOptionType = inputValue;
         this.totalWordLimit = 0;
         this.optionColorCode = 'var(--option-lime)';  
         this.totalCharLimit = 0;
         break;
       case 'List':
-        this.selectedOptionF = inputValue;
+        this.selectedOptionType = inputValue;
         this.totalWordLimit = 0;
         this.optionColorCode = 'var(--option-blue)';
         this.totalCharLimit = 0;
         break;
       case 'Reminder':
-        this.selectedOptionF = inputValue;
+        this.selectedOptionType = inputValue;
         this.totalWordLimit = 0;
         this.optionColorCode = 'var(--option-purple)';
         this.totalCharLimit = 0;
         break;
       case 'Tweet':
-        this.selectedOptionF = inputValue;
+        this.selectedOptionType = inputValue;
         this.totalWordLimit = 0;
         this.optionColorCode = 'var(--option-cyan)';
         this.totalCharLimit = 280;
         break;
       default:
-        this.selectedOptionF = inputValue;
+        this.selectedOptionType = inputValue;
         this.totalWordLimit = 0;
         this.optionColorCode = 'var(--option-pink)';
         this.totalCharLimit = 0;
-
     }   
+    this.placeholderSVC.generatePlaceholderText(inputValue);
+    this.dynPlaceholderText = this.placeholderSVC.optionProperty
   }
 }
 

@@ -6,7 +6,9 @@ import { HttpClientModule } from '@angular/common/http';
 // Services
 import { TextCountService } from './services/text-count/text-count.service';
 import { TextLogService } from './services/text-log/text-log.service';
-import { TitleCreatorService } from './services/title-creator.service'
+import { TitleCreatorService } from './services/title-creator.service';
+import { PlaceholderService } from './services/placeholder.service';
+
 // Directives
 
 // Components
@@ -33,7 +35,7 @@ import { ToggleLogsViewComponent } from "./active-textbox/toggle-view/toggle-log
     FormsModule,
     HttpClientModule
   ],
-  providers: [TextCountService, TextLogService, TitleCreatorService],
+  providers: [TextCountService, TextLogService, TitleCreatorService, PlaceholderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

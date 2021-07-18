@@ -15,6 +15,7 @@
         "productive",
         "treatment",
         "suggest",
+        "vector",
         "animal",
         "slap",
         "skip",
@@ -39,6 +40,7 @@
         "cowardly",
         "rabid",
         "piquant",
+        "dab",
         "tomatoes",
         "oatmeal",
         "neck",
@@ -51,7 +53,7 @@
         "team",
         "damaging",
         "peep",
-        "spiders",
+        "spider",
         "awake",
         "incompetent",
         "pets",
@@ -76,6 +78,7 @@
         "friend",
         "redundant",
         "boiling",
+        "quirky",
         "nebulous",
         "hallowed",
         "fence",
@@ -99,6 +102,19 @@
         "dinosaurs",
         "abhorrent",
         "obtainable",
-        "cheat"
+        "cheat",
+        "chill",
+        "cookie",
+        "gross",
+        "cupcake",
+        "blueberry",
+        "sheep",
+        "robot",
+        "yam",
+        "evade",
+        "chicken",
+        "pig",
+        "bear"
+
     ]
 }

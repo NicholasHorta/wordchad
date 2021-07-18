@@ -12,6 +12,7 @@ export class TextLogsComponent implements OnInit {
 
   constructor(private textLogSRV: TextLogService) { }
 
+
   textLogsArray: TextLog[] = [];
 
   ngOnInit() {

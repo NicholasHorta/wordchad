@@ -3,18 +3,26 @@
 }
 
 .active-textbox__toggle-logs-view {
-    height: 6rem;
-    width: 6rem;
     position: fixed;
     right: 0rem;
     top: 0rem;
     color: #fff;
     z-index: 55;
-    background: var(--orange);
-    padding: 1rem;
+    letter-spacing: .1rem;
+    background: #f593009d;
+    padding: .75rem 2rem;
     border-bottom-left-radius: var(--radius);
     cursor: pointer;
     box-shadow: 3px 3px 9px #d4cebe;
+    display: flex;
+    align-items: center;
+    font-weight: 300;
+}
+
+.toggle-logs-view__icon {
+    height: 2rem;
+    width: 2rem;
+    margin-right: .75rem;
 }
 
 /* .active-textbox__toggle-logs-view:hover::after {

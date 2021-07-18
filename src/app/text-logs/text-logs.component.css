@@ -7,7 +7,7 @@
     display: inline-flex;
     flex-wrap: wrap;
     align-content: flex-start;
-    padding: 1rem 7.5% 1rem 1rem;
+    padding: 5rem 7.5% 1rem 1rem;
 }
 
 .text-logs__container {
@@ -19,7 +19,6 @@
 
 .text-logs__logged-item {
     background-color: #fff;
-    /* border: 3px solid #f5f5f5; */
     box-shadow: 20px 20px 30px #e7e7e7, -20px -20px 30px #ffffff;
     border-radius: var(--radius);
 }
@@ -33,8 +32,14 @@
 
 .logged-item__meta-data {
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
     padding: 0 1.5rem;
+    color: #bebebe;
+    font-size: 0.90rem;
+}
+
+.logged-item__meta-data span {
+    letter-spacing: 0rem;
 }
 
 .header__item-title {
@@ -67,9 +72,8 @@
 
 .logged-items__item-body {
     line-height: 1.55rem;
-    border-top: 2px solid #f1f1f1;
     border-bottom: 2px solid #f1f1f1;
-    padding: 2rem 0;
+    padding-bottom: 2rem;
 
 }
 
