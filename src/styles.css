@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500&display=swap');
 *, *::before, *::after {
     font-family: 'Roboto', sans-serif;
     box-sizing: border-box;
@@ -7,16 +7,24 @@
 
 body {
     margin: 0;
-    background-color: #fff;
+    background-color: rgb(250, 250, 250);
 }
 
 p {
     margin: 0;
+    font-weight: 300;
 }
 
 .major {
     min-height: 100%;
 }
+
+h1, h2, h3, h4, label, textarea {
+    font-weight: 300;
+    letter-spacing: .10rem;
+}
+
+
 
 :root {
     --orange: #ffbb29;
@@ -28,8 +36,15 @@ p {
     --dark-blue: #178cbb;
     --section-space: 3rem;
     --radius: 9px;
-    --radio-buttons-text: #2a8b82;
-    --radio-buttons-bg: #39beb144;
+    --radio-buttons-text: #227e75;
+    --radio-buttons-bg: #949494;
+    --option-purple: #7C17A8;
+    --option-pink: #CF1473;
+    --option-lime: #7dbd00;
+    --option-blue: #205bb3;
+    --option-red: #c94000;
+    --option-cyan: #49c0dd;
+
 }
 
 button {
@@ -38,6 +53,7 @@ button {
     border: 2px solid #999;
     border-radius: 9px;
     cursor: pointer;
+    font-weight: 300;
 }
 
 .proxy-btn {

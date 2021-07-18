@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'app-select-options',
@@ -8,8 +8,10 @@ import {Component, EventEmitter, Output} from '@angular/core';
 
 export class SelectOptionsComponent {
   @Output() selectedOption = new EventEmitter<string>();
+  @Input() optionsColor: string;
 
   selectedOptionHandler(event: Event){
+    console.log(this.optionsColor)
     this.selectedOption.emit((event.target as HTMLInputElement).value);
   }
 }

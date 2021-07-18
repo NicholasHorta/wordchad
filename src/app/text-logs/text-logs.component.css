@@ -49,7 +49,7 @@
 .functional-icons__icon {
     height: 1.5rem;
     width: 1.5rem;
-    margin: 1rem 1.5rem;
+    margin: 1rem 1.5rem 1rem 0rem;
     cursor: pointer;
 }
 
@@ -75,10 +75,11 @@
 
 .logged-items__option-id {
     margin-top: 2rem;
-    color: var(--dark-blue);
+    color: #fff;
     border-radius: var(--radius);
     background-color: #178cbb2c;
     padding: 0.5rem 1.25rem;
+    letter-spacing: 0.15rem;
 }
 
 .logged-items__set-amounts {
@@ -93,4 +94,5 @@
     padding: .5rem 1.5rem;
     border-radius: var(--radius);
     margin-right: 1rem;
+    font-weight: 300;
 }

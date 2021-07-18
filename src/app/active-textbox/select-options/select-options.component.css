@@ -17,7 +17,7 @@
 .select-options__option-item {
     padding: .75rem 1.5rem;
     margin-right: 1.5rem;
-    background: var(--radio-buttons-bg);
+    /* background: var(--radio-buttons-bg); */
     border-radius: var(--radius);
     letter-spacing: .05rem;
     font-size: 0.9rem;
@@ -31,12 +31,6 @@
     justify-content: space-between;
     margin-top: 3rem;
 }
-
-
-.select-options__option-item label {
-    color:  var(--radio-buttons-text);
-}
-
 
 .select-options__option-item input[type='radio']{
     position: absolute;
@@ -58,7 +52,7 @@
 .select-options__option-item input[type='radio']:checked:after{
     content: '';
     position: block;
-    background-color: var(--radio-buttons-bg);
+    background-color: inherit;
 }
 
 

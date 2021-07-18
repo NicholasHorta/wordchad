@@ -9,14 +9,14 @@
   <div class="active-textbox__interactive-area">
     <div class="interactive-area__char-and-word-amounts char-and-word-amounts-top">
       <p >{{ charCountSansSpace }} Characters</p>
-      <p >{{ wordCountSansSpace }} Words</p>
+      <p>{{ wordCountSansSpace }} Words</p>
       <p class="char-and-word-amounts__total-amount">
         {{ charCountWithSpaceAndReturns }} Total
       </p>
     </div>
     <div class="interactive-area__char-and-word-amounts char-and-word-amounts-bottom">
-      <p>{{selectedOptionF}}</p>
-      <p>Character Limit: {{totalCharLimit}}</p>
+      <p style="background: {{optionColorCode}}">{{selectedOptionF}}</p>
+      <p>Character Limit: {{totalCharLimit > 0 ? totalCharLimit : 'Unlimited'}}</p>
       <!-- <p>{{totalWordLimit === 0 ? 'No Word Limit Set' : totalWordLimit}} - Word Limit</p> -->
     </div>
     <div class="interactive-area__action-buttons">
@@ -35,6 +35,6 @@
         </svg>
       </button>
     </div>
-    <app-select-options (selectedOption)="selectedOption($event)"></app-select-options>
+    <app-select-options [optionsColor]="optionColorCode" (selectedOption)="selectedOption($event)"></app-select-options>
   </div>
 </div>

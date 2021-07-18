@@ -1,24 +1,34 @@
 <div class="select-options--container">
     <p class="select-options--text-section">Select one of the following to set an optional parameter. Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni tenetur fuga sit debitis placeat iure nam aperiam quibusdam iste veniam assumenda, eligendi rerum. Eum, ratione?</p>
     <div class="select-options__options">
-        <div class="select-options__option-item">
-            <label for="text-options">Twitter</label>
-            <input type="radio" name="text-options" (click)="selectedOptionHandler($event)" value="twitter">
+        <div class="select-options__option-item" style="background-color: {{optionsColor === 'var(--option-red)' ? optionsColor : 'var(--radio-buttons-bg)'}}">
+            <label for="text-options">Important</label>
+            <input type="radio" name="text-options" (click)="selectedOptionHandler($event)" value="Important">
             <span class="checked-tag"></span>
         </div>
-        <div class="select-options__option-item">
-            <label for="text-options">SMS</label>
-            <input type="radio" name="text-options" (click)="selectedOptionHandler($event)" value="SMS">
+        <div class="select-options__option-item" style="background-color: {{optionsColor === 'var(--option-lime)' ? optionsColor : 'var(--radio-buttons-bg)'}}">
+            <label for="text-options">To Do</label>
+            <input type="radio" name="text-options" (click)="selectedOptionHandler($event)" value="To Do">
             <span class="checked-tag"></span>
         </div>
-        <div class="select-options__option-item">
-            <label for="text-options">UCAS</label>
-            <input type="radio" name="text-options" (click)="selectedOptionHandler($event)" value="UCAS">
+        <div class="select-options__option-item" style="background-color: {{optionsColor === 'var(--option-blue)' ? optionsColor : 'var(--radio-buttons-bg)'}}">
+            <label for="text-options">List</label>
+            <input type="radio" name="text-options" (click)="selectedOptionHandler($event)" value="List">
             <span class="checked-tag"></span>
         </div>
-        <div class="select-options__option-item">
-            <label for="text-options">Free Flow</label>
-            <input type="radio" name="text-options" (click)="selectedOptionHandler($event)" value="No Limit" checked>
+        <div class="select-options__option-item" style="background-color: {{optionsColor === 'var(--option-purple)' ? optionsColor : 'var(--radio-buttons-bg)'}}">
+            <label for="text-options">Reminder</label>
+            <input type="radio" name="text-options" (click)="selectedOptionHandler($event)" value="Reminder">
+            <span class="checked-tag"></span>
+        </div>
+        <div class="select-options__option-item" style="background-color: {{optionsColor === 'var(--option-cyan)' ? optionsColor : 'var(--radio-buttons-bg)'}}">
+            <label for="text-options">Tweet</label>
+            <input type="radio" name="text-options" (click)="selectedOptionHandler($event)" value="Tweet">
+            <span class="checked-tag"></span>
+        </div>
+        <div class="select-options__option-item" style="background-color: {{optionsColor === 'var(--option-pink)' ? optionsColor : 'var(--radio-buttons-bg)'}}">
+            <label for="text-options">Note</label>
+            <input type="radio" name="text-options" (click)="selectedOptionHandler($event)" value="Note" checked>
             <span class="checked-tag"></span>
         </div>
     </div>

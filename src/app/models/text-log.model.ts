@@ -6,7 +6,8 @@ export class TextLog {
   public totalAmt: number;
   public logId: number;
   public optionId: string;
-  constructor(title: string, body: string, chars: number, words: number, total: number, logId: number, optionId: string) {
+  public colorCode: string;
+  constructor(title: string, body: string, chars: number, words: number, total: number, logId: number, optionId: string, colorCode: string) {
     this.title = title;
     this.body = body;
     this.charAmt = chars;
@@ -14,5 +15,6 @@ export class TextLog {
     this.totalAmt = total;
     this.logId = logId;
     this.optionId = optionId;
+    this.colorCode = colorCode;
   }
 }

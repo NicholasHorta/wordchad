@@ -21,8 +21,6 @@ export class ActiveTextboxComponent implements OnInit, OnChanges{
   @Input() darkModeActive: boolean;
   @Input() textLogViewState: boolean;
 
-
-
   textBoxData: string = '';
   wordCountSansSpace: number = 0;
   charCountSansSpace: number = 0;
@@ -31,12 +29,13 @@ export class ActiveTextboxComponent implements OnInit, OnChanges{
   selectedOptionF: string;
   totalWordLimit: number;
   totalCharLimit: number;
+  optionColorCode: string;
   logId: number;
   //!! Configure date for model and service 
   logTime: object = new Date();
 
   ngOnInit() {
-    this.selectedOption('No Limit');
+    this.selectedOption('Note');
   }
 
   ngOnChanges(){
@@ -69,7 +68,8 @@ export class ActiveTextboxComponent implements OnInit, OnChanges{
     const newTotalCharCount = this.charCountWithSpaceAndReturns;
     const newLogId = this.logId;
     const optionId = this.selectedOptionF;
-    const newTextLog = new TextLog(newLogTitle, newLogBody, newLogCharCount, newLogWordCount, newTotalCharCount, newLogId, optionId);
+    const colorCode = this.optionColorCode;
+    const newTextLog = new TextLog(newLogTitle, newLogBody, newLogCharCount, newLogWordCount, newTotalCharCount, newLogId, optionId, colorCode);
     this.textLogSVC.logNew(newTextLog);
   }
 
@@ -85,25 +85,42 @@ export class ActiveTextboxComponent implements OnInit, OnChanges{
 
   selectedOption(inputValue: string) {
     switch (inputValue) {
-      case 'twitter':
+      case 'Important':
         this.selectedOptionF = inputValue;
         this.totalWordLimit = 0;
+        this.optionColorCode = 'var(--option-red)'; 
+        this.totalCharLimit = 0;
+        break;
+      case 'To Do':
+        this.selectedOptionF = inputValue;
+        this.totalWordLimit = 0;
+        this.optionColorCode = 'var(--option-lime)';  
+        this.totalCharLimit = 0;
+        break;
+      case 'List':
+        this.selectedOptionF = inputValue;
+        this.totalWordLimit = 0;
+        this.optionColorCode = 'var(--option-blue)';
+        this.totalCharLimit = 0;
+        break;
+      case 'Reminder':
+        this.selectedOptionF = inputValue;
+        this.totalWordLimit = 0;
+        this.optionColorCode = 'var(--option-purple)';
+        this.totalCharLimit = 0;
+        break;
+      case 'Tweet':
+        this.selectedOptionF = inputValue;
+        this.totalWordLimit = 0;
+        this.optionColorCode = 'var(--option-cyan)';
         this.totalCharLimit = 280;
-        break;
-      case 'UCAS':
-        this.selectedOptionF = inputValue;
-        this.totalWordLimit = 0;
-        this.totalCharLimit = 4000;
-        break;
-      case 'SMS':
-        this.selectedOptionF = inputValue;
-        this.totalWordLimit = 0;
-        this.totalCharLimit = 160;
         break;
       default:
         this.selectedOptionF = inputValue;
         this.totalWordLimit = 0;
+        this.optionColorCode = 'var(--option-pink)';
         this.totalCharLimit = 0;
+
     }   
   }
 }
