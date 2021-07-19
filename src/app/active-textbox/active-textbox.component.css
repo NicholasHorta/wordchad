@@ -1,10 +1,13 @@
 .active-textbox__container {
-    /* max-width: 900px; */
-    margin: 0 auto;
+    max-width: 900px;
+    margin: 5rem auto;
     padding: 0 3rem;
-    padding: 0 30rem;
+    /* padding: 0 30rem; */
     background-image: linear-gradient(#fff);
     transition: filter 550ms ease-in;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .active-textbox__background-blur-active {
@@ -45,7 +48,7 @@
     border: 2px solid var(--green);
 }
 
-.active-textbox__text-inputs input::placeholder {
+.active-textbox__text-inputs textarea::placeholder {
     color: #cacaca;
 }
 

@@ -1,35 +1,52 @@
 .select-options--container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 300px;
     flex-direction: column;
-    margin-top: var(--section-space);
+    /* margin-top: var(--section-space); */
     margin-bottom: 5rem;
-    padding-top: var(--section-space);;
-    border-top: 2px solid var(--grey);
+    /* padding-top: var(--section-space); */
+    background-color: rgba(235, 235, 235, 0.568);
+    height: 100%;
 }
 
 .select-options__options {
     display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
+
 }
 
 .select-options--text-section{
     color: #8a8a8a;
+    margin: 2.5rem 0rem 0;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.select-options--text-section {
+    margin: 2.5rem 0rem -1rem;
 }
 
 .select-options__option-item {
-    padding: .75rem 1.5rem;
-    margin-right: 1.5rem;
+    padding: 0.75rem 1.5rem;
+    width: 100%;
+    margin: 2.5rem 2rem 0;
     /* background: var(--radio-buttons-bg); */
     border-radius: var(--radius);
     letter-spacing: .05rem;
     font-size: 0.9rem;
     color: #fff;
-    min-width: 100px;
+    /* min-width: calc(50% - 16px); */
     position: relative;
     display: flex;
     align-items: center;
-    max-width: 150px;
+    /* max-width: 150px; */
     display: flex;
     justify-content: space-between;
-    margin-top: 3rem;
+
 }
 
 .select-options__option-item input[type='radio']{

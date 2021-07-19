@@ -5,6 +5,11 @@
     box-sizing: border-box;
 }
 
+
+html {
+    height: 100%;
+}
+
 body {
     margin: 0;
     background-color: rgb(250, 250, 250);
